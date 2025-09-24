@@ -1,0 +1,173 @@
+{
+  "timestamp": "2025-09-24T18:58:32.768006",
+  "total_unique_categories": 36,
+  "categories_list": [
+    "Abbligliamento",
+    "Accessori bar e vino e ristorazione",
+    "Agricoltura",
+    "Articoli di Marca",
+    "Articoli sostenbili",
+    "Attrezzi, Bricolage e Auto",
+    "Beauty",
+    "Cappellini e Capelli",
+    "Casa e Decorazione",
+    "Estate e spiaggia",
+    "Eventi e Feste",
+    "Igiene e protezione",
+    "Infanzia",
+    "Limited Edition",
+    "Linea antibatterica",
+    "Linea spagnola",
+    "Linea sublimazione",
+    "Made in europe",
+    "Natale",
+    "Outlet",
+    "Packaging",
+    "Personal care",
+    "Pioggia e Freddo",
+    "Prodotti per animali domestici",
+    "Regali e Premi",
+    "Scrittura",
+    "Shopper",
+    "Sport e Avventure",
+    "Take Away",
+    "Tecnologia e Accessori",
+    "Tempo Libero",
+    "USB A STOCK",
+    "Ufficio e Affari",
+    "Viaggi",
+    "Zaini",
+    "tazze, brocche e thermos"
+  ],
+  "hierarchy_examples": [
+    "Attrezzi, Bricolage e Auto > Agricoltura",
+    "Accessori bar e vino e ristorazione",
+    "Tecnologia e Accessori",
+    "Ufficio e Affari",
+    "Ufficio e Affari > Articoli sostenbili"
+  ],
+  "top_categories": [
+    {
+      "name": "Articoli sostenbili",
+      "count": 1731
+    },
+    {
+      "name": "Tecnologia e Accessori",
+      "count": 600
+    },
+    {
+      "name": "Ufficio e Affari",
+      "count": 480
+    },
+    {
+      "name": "Regali e Premi",
+      "count": 450
+    },
+    {
+      "name": "tazze, brocche e thermos",
+      "count": 444
+    },
+    {
+      "name": "Scrittura",
+      "count": 371
+    },
+    {
+      "name": "Casa e Decorazione",
+      "count": 316
+    },
+    {
+      "name": "Estate e spiaggia",
+      "count": 290
+    },
+    {
+      "name": "Outlet",
+      "count": 280
+    },
+    {
+      "name": "Infanzia",
+      "count": 278
+    },
+    {
+      "name": "Accessori bar e vino e ristorazione",
+      "count": 242
+    },
+    {
+      "name": "Personal care",
+      "count": 234
+    },
+    {
+      "name": "Zaini",
+      "count": 231
+    },
+    {
+      "name": "Shopper",
+      "count": 224
+    },
+    {
+      "name": "Abbligliamento",
+      "count": 199
+    },
+    {
+      "name": "Attrezzi, Bricolage e Auto",
+      "count": 187
+    },
+    {
+      "name": "Eventi e Feste",
+      "count": 160
+    },
+    {
+      "name": "Sport e Avventure",
+      "count": 147
+    },
+    {
+      "name": "Linea sublimazione",
+      "count": 130
+    },
+    {
+      "name": "Cappellini e Capelli",
+      "count": 123
+    }
+  ],
+  "hotel_related_categories": [
+    "Ufficio e Affari",
+    "Casa e Decorazione"
+  ],
+  "suggested_woocommerce_mapping": {
+    "Articoli sostenbili": "Articoli sostenbili",
+    "USB A STOCK": "USB A STOCK",
+    "Linea sublimazione": "Linea sublimazione",
+    "Zaini": "Zaini",
+    "Eventi e Feste": "Eventi e Feste",
+    "Sport e Avventure": "Sport e Avventure",
+    "Estate e spiaggia": "Estate e spiaggia",
+    "Scrittura": "Scrittura",
+    "Linea spagnola": "Linea spagnola",
+    "Beauty": "Beauty",
+    "Tempo Libero": "Tempo Libero",
+    "Shopper": "Shopper",
+    "Made in europe": "Made in europe",
+    "Limited Edition": "Limited Edition",
+    "Take Away": "Take Away",
+    "Cappellini e Capelli": "Cappellini e Capelli",
+    "Viaggi": "Viaggi",
+    "Abbligliamento": "Abbligliamento",
+    "Ufficio e Affari": "Ufficio e Affari",
+    "Articoli di Marca": "Articoli di Marca",
+    "Regali e Premi": "Regali e Premi",
+    "Linea antibatterica": "Linea antibatterica",
+    "Prodotti per animali domestici": "Prodotti per animali domestici",
+    "Outlet": "Outlet",
+    "Personal care": "Personal care",
+    "Casa e Decorazione": "Casa e Decorazione",
+    "Pioggia e Freddo": "Pioggia e Freddo",
+    "Attrezzi, Bricolage e Auto": "Attrezzi, Bricolage e Auto",
+    "Igiene e protezione": "Igiene e protezione",
+    "Agricoltura": "Agricoltura",
+    "Infanzia": "Infanzia",
+    "Accessori bar e vino e ristorazione": "Accessori bar e vino e ristorazione",
+    "Tecnologia e Accessori": "Tecnologia e Accessori",
+    "Natale": "Natale",
+    "tazze, brocche e thermos": "tazze, brocche e thermos",
+    "Packaging": "Packaging"
+  }
+}

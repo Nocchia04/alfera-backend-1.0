@@ -1,0 +1,57 @@
+{
+  "timestamp": "2025-09-24 20:25:53.769712+00:00",
+  "tests": {
+    "csv_file": {
+      "success": true,
+      "size": 1161905
+    },
+    "supplier_creation": {
+      "success": true,
+      "created": false
+    },
+    "client_factory": {
+      "success": true,
+      "client_type": "BICParser"
+    },
+    "product_parsing": {
+      "success": true,
+      "count": 5,
+      "sample_product": {
+        "sku": "BIC_3460001025",
+        "name": "BIC® Media Clic penna a sfera",
+        "brand": "BIC®",
+        "categories": [
+          "BIC®",
+          "Prodotti Promozionali"
+        ],
+        "image_count": 2,
+        "variant_count": 1,
+        "price_count": 0
+      }
+    },
+    "print_data": {
+      "success": true,
+      "count": 99
+    },
+    "language_analysis": {
+      "success": true,
+      "languages": [
+        "de",
+        "en",
+        "es",
+        "fi",
+        "fr",
+        "it",
+        "nl",
+        "pt",
+        "sv"
+      ]
+    },
+    "performance": {
+      "success": true,
+      "products_count": 50,
+      "duration_seconds": 0.05,
+      "products_per_second": 935.4
+    }
+  }
+}

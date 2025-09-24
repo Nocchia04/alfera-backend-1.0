@@ -1,0 +1,19 @@
+[
+    {
+        "model": "suppliers.supplier",
+        "pk": 1,
+        "fields": {
+            "name": "MKTO Web Service",
+            "code": "MKTO",
+            "supplier_type": "MAKITO",
+            "is_active": true,
+            "api_base_url": "",
+            "api_key": "",
+            "api_secret": "",
+            "xml_path": "C:\\Users\\beamo\\Desktop\\Lavoro\\Alfera\\data\\",
+            "created_at": "2025-01-27T10:00:00Z",
+            "updated_at": "2025-01-27T10:00:00Z",
+            "last_sync": null
+        }
+    }
+]
