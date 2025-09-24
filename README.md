@@ -1,4 +1,4 @@
-# 🏨 Hotel Sync - Sistema di Sincronizzazione Fornitori
+# Hotel Sync - Sistema di Sincronizzazione Fornitori
 
 **Sistema Django per la sincronizzazione automatica di prodotti per forniture alberghiere da fornitori multipli verso WooCommerce**
 
@@ -7,136 +7,138 @@
 [![WooCommerce](https://img.shields.io/badge/WooCommerce-API-purple.svg)](https://woocommerce.github.io/woocommerce-rest-api-docs/)
 [![Status](https://img.shields.io/badge/Status-Production%20Ready-brightgreen.svg)]()
 
----
+## Indice
 
-## 📋 Indice
+- [Panoramica](#panoramica)
+- [Funzionalità](#funzionalità)
+- [Architettura](#architettura)
+- [Installazione](#installazione)
+- [Configurazione](#configurazione)
+- [Utilizzo](#utilizzo)
+- [Fornitori Supportati](#fornitori-supportati)
+- [Gestione Immagini](#gestione-immagini)
+- [Sviluppo](#sviluppo)
+- [API Reference](#api-reference)
+- [Deploy](#deploy)
+- [FAQ](#faq)
 
-- [🎯 Panoramica](#-panoramica)
-- [✨ Funzionalità](#-funzionalità)
-- [🏗️ Architettura](#️-architettura)
-- [🚀 Installazione](#-installazione)
-- [⚙️ Configurazione](#️-configurazione)
-- [📊 Utilizzo](#-utilizzo)
-- [🔧 Fornitori Supportati](#-fornitori-supportati)
-- [📸 Gestione Immagini](#-gestione-immagini)
-- [🛠️ Sviluppo](#️-sviluppo)
-- [📚 API Reference](#-api-reference)
-- [🚀 Deploy](#-deploy)
-- [❓ FAQ](#-faq)
-
----
-
-## 🎯 Panoramica
+## Panoramica
 
 **Hotel Sync** è un sistema completo per automatizzare la sincronizzazione di prodotti per forniture alberghiere da diversi fornitori verso un e-commerce WooCommerce.
 
-### 🎪 Problema Risolto
+### Problema Risolto
+
 - **Sincronizzazione manuale** di migliaia di prodotti
 - **Formati dati diversi** (XML, CSV, API REST)
 - **Gestione immagini** complessa
 - **Aggiornamenti** stock e prezzi frequenti
 - **Categorizzazione** prodotti uniforme
 
-### 🎯 Soluzione
+### Soluzione
+
 Sistema unificato che:
+
 - ✅ **Sincronizza automaticamente** prodotti da fornitori multipli
 - ✅ **Gestisce immagini reali** con processing e upload automatico
 - ✅ **Unifica categorie** con mapping intelligente
 - ✅ **Aggiorna stock e prezzi** in tempo reale
 - ✅ **Scala facilmente** per nuovi fornitori
 
----
+## Funzionalità
 
-## ✨ Funzionalità
+### Sincronizzazione Avanzata
 
-### 🔄 Sincronizzazione Avanzata
 - **Multi-formato**: XML, CSV, API REST
 - **Batch processing**: Migliaia di prodotti
 - **Delta sync**: Solo modifiche
 - **Error recovery**: Gestione errori robusta
 - **Logging completo**: Tracciabilità operazioni
 
-### 📸 Gestione Immagini Intelligente
+### Gestione Immagini Intelligente
+
 - **Download automatico** da URL fornitori
 - **Processing PIL**: Ridimensionamento, conversione
 - **Upload WooCommerce**: Media Library integration
 - **Formati supportati**: JPEG, PNG, WebP
 - **Fallback graceful**: Gestione errori immagini
 
-### 🏷️ Categorizzazione Unificata
+### Categorizzazione Unificata
+
 - **Mapping automatico** categorie fornitori → WooCommerce
 - **Gerarchia mantenuta**: Struttura ad albero
 - **Analisi intelligente**: Rilevamento categorie hotel-related
 - **Creazione automatica**: Categorie mancanti
 
-### 🎛️ Controllo Granulare
+### Controllo Granulare
+
 - **Demo mode**: Test con pochi prodotti
 - **Full sync**: Sincronizzazione completa
 - **Supplier-specific**: Per fornitore
 - **Image-only**: Solo upload immagini
 
----
-
-## 🏗️ Architettura
+## Architettura
 
 ```
 hotel_sync/
-├── 🏢 hotel_sync/          # Configurazione Django
-├── 📦 suppliers/           # Gestione fornitori
-│   └── clients/           # Client API/Parser
-├── 🛍️ products/           # Modelli prodotti unificati
-├── 🔄 sync/               # Servizi sincronizzazione
-├── 🛒 woocommerce_integration/ # Client WooCommerce
-├── 📜 scripts/            # Script di utilità
-│   ├── sync/             # Sincronizzazione
-│   ├── test/             # Testing
-│   ├── utils/            # Utilità
-│   └── setup/            # Configurazione
-├── 📁 data/              # File dati fornitori
-└── 📚 docs/              # Documentazione
+├── hotel_sync/          # Configurazione Django
+├── suppliers/           # Gestione fornitori
+│   └── clients/        # Client API/Parser
+├── products/           # Modelli prodotti unificati
+├── sync/               # Servizi sincronizzazione
+├── woocommerce_integration/ # Client WooCommerce
+├── scripts/            # Script di utilità
+│   ├── sync/          # Sincronizzazione
+│   ├── test/          # Testing
+│   ├── utils/         # Utilità
+│   └── setup/         # Configurazione
+├── data/              # File dati fornitori
+└── docs/              # Documentazione
 ```
 
-### 🧩 Componenti Principali
+### Componenti Principali
 
-#### 🏭 **Supplier Clients**
+#### Supplier Clients
+
 ```python
 # Factory Pattern per creazione client
 client = SupplierClientFactory.create_client(supplier)
 products = client.get_products(limit=100)
 ```
 
-#### 🔄 **Sync Service**
+#### Sync Service
+
 ```python
 # Orchestratore sincronizzazione
 sync_service = SyncService()
 result = sync_service.sync_supplier(supplier, sync_to_woocommerce=True)
 ```
 
-#### 🛒 **WooCommerce Integration**
+#### WooCommerce Integration
+
 ```python
 # Client WooCommerce con gestione immagini
 wc_client = WooCommerceClient()
 product = wc_client.create_or_update_product(product_data)
 ```
 
-#### 🖼️ **Image Handler**
+#### Image Handler
+
 ```python
 # Processing e upload immagini
 image_handler = ImageHandler()
 processed = image_handler.process_product_images(product_data)
 ```
 
----
+## Installazione
 
-## 🚀 Installazione
+### Prerequisiti
 
-### 📋 Prerequisiti
 - **Python 3.11+**
 - **PostgreSQL** (produzione) / **SQLite** (sviluppo)
 - **Redis** (opzionale, per caching)
 - **WooCommerce** con API abilitata
 
-### 🔧 Setup Rapido
+### Setup Rapido
 
 ```bash
 # 1. Clone repository
@@ -168,11 +170,9 @@ python scripts/test/test_mkto.py
 python scripts/test/test_bic.py
 ```
 
----
+## Configurazione
 
-## ⚙️ Configurazione
-
-### 🔐 File `.env`
+### File .env
 
 ```bash
 # Database
@@ -196,7 +196,7 @@ DEBUG=True
 ALLOWED_HOSTS=localhost,127.0.0.1
 ```
 
-### 🗂️ Percorsi Dati
+### Percorsi Dati
 
 Posiziona i file dati nella directory `data/`:
 
@@ -210,18 +210,16 @@ data/
 └── BGE_Masterfile_Distributor_EUR.csv  # BIC Prodotti
 ```
 
-### 🛒 Setup WooCommerce
+### Setup WooCommerce
 
 ```bash
 # Configura credenziali API
 python scripts/setup/setup_woocommerce.py
 ```
 
----
+## Utilizzo
 
-## 📊 Utilizzo
-
-### 🚀 Script Master
+### Script Master
 
 Il modo più semplice per usare il sistema:
 
@@ -242,9 +240,10 @@ python scripts/run_sync.py --supplier BIC --images
 python scripts/run_sync.py --test-all
 ```
 
-### 🔧 Script Specifici
+### Script Specifici
 
-#### 📊 **MKTO (Web Service XML)**
+#### MKTO (Web Service XML)
+
 ```bash
 # Sincronizzazione completa
 python scripts/sync/sync_mkto_complete.py
@@ -259,7 +258,8 @@ python scripts/sync/sync_mkto_complete.py --no-woocommerce
 python scripts/sync/sync_mkto_complete.py --clear-cache
 ```
 
-#### 📊 **BIC (CSV)**
+#### BIC (CSV)
+
 ```bash
 # Sincronizzazione prodotti
 python scripts/sync/sync_bic_complete.py
@@ -271,7 +271,8 @@ python scripts/sync/host_bic_images.py
 python scripts/sync/sync_bic_complete.py --language it
 ```
 
-#### 🧪 **Testing**
+#### Testing
+
 ```bash
 # Test MKTO
 python scripts/test/test_mkto.py
@@ -280,7 +281,8 @@ python scripts/test/test_mkto.py
 python scripts/test/test_bic.py
 ```
 
-#### 🛠️ **Utilità**
+#### Utilità
+
 ```bash
 # Analisi categorie MKTO
 python scripts/utils/analyze_mkto_categories.py
@@ -290,9 +292,12 @@ python scripts/utils/implement_category_integration.py
 
 # Fix SKU duplicati
 python scripts/utils/fix_duplicate_skus.py
+
+# Elimina tutti i prodotti WooCommerce
+python scripts/utils/delete_all_wc_products_fixed.py
 ```
 
-### 🎛️ Django Management Commands
+### Django Management Commands
 
 ```bash
 # Sincronizzazione via Django command
@@ -300,18 +305,17 @@ python manage.py sync --supplier MKTO
 python manage.py sync --supplier BIC --limit 10
 ```
 
----
+## Fornitori Supportati
 
-## 🔧 Fornitori Supportati
+### MKTO (Web Service XML)
 
-### 🌐 **MKTO (Web Service XML)**
-
-**Formato**: XML files multipli
-**Prodotti**: ~50,000+
-**Categorie**: Gerarchia complessa
+**Formato**: XML files multipli  
+**Prodotti**: ~50,000+  
+**Categorie**: Gerarchia complessa  
 **Lingue**: Italiano, Inglese
 
 **File richiesti**:
+
 - `alldatafile_ita.xml` - Prodotti e varianti
 - `allstockgroupedfile.xml` - Stock
 - `pricefile_€805301.xml` - Prezzi
@@ -319,34 +323,35 @@ python manage.py sync --supplier BIC --limit 10
 - `PrintPrices_ita.xml` - Prezzi stampa
 
 **Caratteristiche**:
+
 - ✅ Parsing XML ottimizzato per file grandi
 - ✅ Cache intelligente Redis
 - ✅ Gestione varianti (colore, taglia)
 - ✅ Mapping categorie automatico
 - ✅ Generazione SKU unici
 
-### 🖊️ **BIC (CSV)**
+### BIC (CSV)
 
-**Formato**: CSV multilingua
-**Prodotti**: ~5,000+
-**Categorie**: Brand-based
+**Formato**: CSV multilingua  
+**Prodotti**: ~5,000+  
+**Categorie**: Brand-based  
 **Lingue**: IT, EN, FR, DE, ES
 
 **File richiesto**:
+
 - `BGE_Masterfile_Distributor_EUR.csv`
 
 **Caratteristiche**:
+
 - ✅ Selezione lingua preferita
 - ✅ Prezzi a scaglioni
 - ✅ Immagini reali con processing
 - ✅ Dati packaging completi
 - ✅ Upload immagini automatico
 
----
+## Gestione Immagini
 
-## 📸 Gestione Immagini
-
-### 🔄 Pipeline Immagini
+### Pipeline Immagini
 
 ```python
 # 1. Download da URL fornitore
@@ -362,40 +367,43 @@ processed = image_handler._process_with_pil(image_data, filename)
 wc_client.update_product_images(product_id, images)
 ```
 
-### 🖼️ **Formati Supportati**
+### Formati Supportati
+
 - ✅ **JPEG** - Conversione automatica
 - ✅ **PNG** - Mantenimento trasparenza  
 - ✅ **WebP** - Supporto moderno
 - ❌ **PDF** - Skippo automatico
 
-### 🎨 **Processing Features**
+### Processing Features
+
 - **Ridimensionamento**: Max 800x600px
 - **Compressione**: Qualità ottimizzata
 - **Conversione**: Formato uniforme
 - **Validazione**: Check integrità
 
-### 🚀 **Upload Strategies**
+### Upload Strategies
 
-#### **Metodo 1: Direct Media Upload**
+#### Metodo 1: Direct Media Upload
+
 ```python
 # Upload diretto su WordPress Media Library
 response = requests.post(media_endpoint, files=files)
 ```
 
-#### **Metodo 2: Temporary Server** 
+#### Metodo 2: Temporary Server 
+
 ```python
 # Server HTTP temporaneo per hosting
 python scripts/sync/host_bic_images.py
 # Auto-stop dopo download WooCommerce
 ```
 
----
+## Sviluppo
 
-## 🛠️ Sviluppo
+### Aggiungere Nuovo Fornitore
 
-### 🏗️ Aggiungere Nuovo Fornitore
+#### 1. Creare Parser
 
-#### 1. **Creare Parser**
 ```python
 # suppliers/clients/new_supplier_parser.py
 class NewSupplierParser(BaseSupplierClient):
@@ -404,14 +412,16 @@ class NewSupplierParser(BaseSupplierClient):
         pass
 ```
 
-#### 2. **Aggiornare Factory**
+#### 2. Aggiornare Factory
+
 ```python
 # suppliers/clients/factory.py
 elif supplier.supplier_type == 'NEW_SUPPLIER':
     return NewSupplierParser(supplier)
 ```
 
-#### 3. **Aggiornare Models**
+#### 3. Aggiornare Models
+
 ```python
 # suppliers/models.py
 SUPPLIER_TYPES = [
@@ -420,7 +430,8 @@ SUPPLIER_TYPES = [
 ]
 ```
 
-#### 4. **Data Mapper**
+#### 4. Data Mapper
+
 ```python
 # sync/services/data_mapper.py
 def _map_new_supplier_product(self, raw_data, supplier):
@@ -428,7 +439,7 @@ def _map_new_supplier_product(self, raw_data, supplier):
     pass
 ```
 
-### 🧪 Testing
+### Testing
 
 ```bash
 # Test specifico fornitore
@@ -442,7 +453,7 @@ coverage run --source='.' manage.py test
 coverage report
 ```
 
-### 📊 Logging e Monitoring
+### Logging e Monitoring
 
 ```python
 # Configurazione logging
@@ -464,11 +475,9 @@ LOGGING = {
 }
 ```
 
----
+## API Reference
 
-## 📚 API Reference
-
-### 🏭 **SupplierClientFactory**
+### SupplierClientFactory
 
 ```python
 # Crea client per fornitore
@@ -480,7 +489,7 @@ stock = client.get_stock(product_code)
 prices = client.get_prices(product_code)
 ```
 
-### 🔄 **SyncService**
+### SyncService
 
 ```python
 # Sincronizzazione fornitore
@@ -502,7 +511,7 @@ result = sync_service.sync_supplier(
 }
 ```
 
-### 🛒 **WooCommerceClient**
+### WooCommerceClient
 
 ```python
 # Creazione/aggiornamento prodotto
@@ -519,7 +528,7 @@ category = wc_client.create_category({
 stats = wc_client.get_product_stats()
 ```
 
-### 🖼️ **ImageHandler**
+### ImageHandler
 
 ```python
 # Processing immagini prodotto
@@ -536,11 +545,9 @@ processed = image_handler.process_product_images(product_data)
 ]
 ```
 
----
+## Deploy
 
-## 🚀 Deploy
-
-### 🐳 **Heroku Deployment**
+### Heroku Deployment
 
 ```bash
 # 1. Setup Heroku
@@ -566,9 +573,10 @@ heroku addons:create scheduler:standard
 # Aggiungi job: python manage.py sync --supplier MKTO
 ```
 
-### 🔧 **File di Deploy**
+### File di Deploy
 
 **Procfile**:
+
 ```
 web: gunicorn hotel_sync.wsgi --log-file -
 worker: celery -A hotel_sync worker --loglevel=error
@@ -576,11 +584,12 @@ beat: celery -A hotel_sync beat --loglevel=error
 ```
 
 **runtime.txt**:
+
 ```
 python-3.11.0
 ```
 
-### 🌐 **Docker** (Opzionale)
+### Docker (Opzionale)
 
 ```dockerfile
 # Dockerfile
@@ -608,52 +617,49 @@ services:
     image: redis:alpine
 ```
 
----
+## FAQ
 
-## ❓ FAQ
+### Domande Generali
 
-### 🤔 **Domande Generali**
-
-**Q: Quanti prodotti può gestire?**
+**Q: Quanti prodotti può gestire?**  
 A: Testato con 50,000+ prodotti MKTO. Scalabile con batch processing e caching.
 
-**Q: Quanto tempo richiede una sincronizzazione completa?**
+**Q: Quanto tempo richiede una sincronizzazione completa?**  
 A: ~30-60 minuti per MKTO completo, ~10-15 minuti per BIC, dipende dalla connessione.
 
-**Q: Le immagini vengono scaricate ogni volta?**
+**Q: Le immagini vengono scaricate ogni volta?**  
 A: No, sistema di cache intelligente evita download duplicati.
 
-### 🔧 **Problemi Comuni**
+### Problemi Comuni
 
-**Q: Errore "No URL Provided" per immagini**
+**Q: Errore "No URL Provided" per immagini**  
 A: Usa `host_bic_images.py` che crea server temporaneo per upload.
 
-**Q: Prodotti non appaiono su WooCommerce**
+**Q: Prodotti non appaiono su WooCommerce**  
 A: Controlla che `woocommerce_id` sia impostato e status sia 'draft'.
 
-**Q: File XML troppo grandi**
+**Q: File XML troppo grandi**  
 A: Parser MKTO usa streaming XML, ma aumenta memoria se necessario.
 
-**Q: Redis non disponibile**
+**Q: Redis non disponibile**  
 A: Sistema funziona senza Redis, usa cache locale automaticamente.
 
-### 🚀 **Performance**
+### Performance
 
-**Q: Come migliorare velocità sincronizzazione?**
+**Q: Come migliorare velocità sincronizzazione?**  
 A: 
 - Usa Redis per caching
 - Aumenta batch size
 - Sincronizza solo delta (modifiche)
 - Usa Celery per processing asincrono
 
-**Q: Database PostgreSQL vs SQLite?**
+**Q: Database PostgreSQL vs SQLite?**  
 A: PostgreSQL per produzione (concurrent access), SQLite per sviluppo.
 
----
+## Roadmap
 
-## 🎯 **Roadmap**
+### Prossime Funzionalità
 
-### 🔮 **Prossime Funzionalità**
 - [ ] **API REST** per controllo esterno
 - [ ] **Dashboard web** per monitoring
 - [ ] **Webhook WooCommerce** per sync bidirezionale  
@@ -661,44 +667,44 @@ A: PostgreSQL per produzione (concurrent access), SQLite per sviluppo.
 - [ ] **Multi-store** support
 - [ ] **Inventory management** avanzato
 
-### 🛠️ **Miglioramenti Tecnici**
+### Miglioramenti Tecnici
+
 - [ ] **GraphQL API** per query complesse
 - [ ] **Kubernetes** deployment
 - [ ] **Elasticsearch** per ricerca prodotti
 - [ ] **Message queues** per reliability
 - [ ] **Microservices** architecture
 
----
+## Supporto
 
-## 📞 **Supporto**
+### Bug Reports
 
-### 🐛 **Bug Reports**
 Apri issue su GitHub con:
+
 - Descrizione dettagliata
 - Logs errore
 - Steps per riprodurre
 - Ambiente (OS, Python version)
 
-### 💡 **Feature Requests**
+### Feature Requests
+
 Proponi nuove funzionalità via GitHub Issues con:
+
 - Caso d'uso specifico
 - Benefici attesi
 - Implementazione suggerita
 
-### 📧 **Contatti**
+### Contatti
+
 - **Email**: support@hotel-sync.com
 - **GitHub**: [Repository Link]
 - **Docs**: [Documentation Link]
 
----
-
-## 📄 **Licenza**
+## Licenza
 
 MIT License - Vedi file `LICENSE` per dettagli.
 
----
-
-## 🙏 **Ringraziamenti**
+## Ringraziamenti
 
 - **Django Community** per il framework robusto
 - **WooCommerce** per le API eccellenti  
@@ -708,8 +714,6 @@ MIT License - Vedi file `LICENSE` per dettagli.
 
 ---
 
-**🚀 Hotel Sync - Sincronizzazione Fornitori Semplificata**
+**Hotel Sync - Sincronizzazione Fornitori Semplificata**
 
 *Made with ❤️ for the hospitality industry*
-#   a l f e r a - b a c k e n d - 1 . 0  
- 
